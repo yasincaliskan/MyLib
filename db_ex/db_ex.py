@@ -1,37 +1,38 @@
 import sqlite3
-import random
-import time
-import datetime
 
-
-con = sqlite3.connect("dersler2.db")
+con = sqlite3.connect("ornekdb.db")
 cursor = con.cursor()
 
+
 def tabloOlustur():
-    cursor.execute('''CREATE TABLE IF NOT EXISTS talebeler(id integer, ad text, soyad text, numara integer, notu integer)''')
+    cursor.execute("CREATE TABLE IF NOT EXISTS tablo1(ad text,soyad text, numara int)")
     con.commit()
 
-def degerEkle():
-    cursor.execute('''INSERT INTO talebeler VALUES (2,"baran","aydın",1412312,90)''')
+def veriEkle():
+    a = str(input("ad:"))
+    b = str(input("soyad:"))
+    c = int(input("numara:"))
+    cursor.execute("INSERT INTO tablo1 (ad,soyad,numara) VALUES(?,?,?)",(a,b,c))
+    con.commit()
+
+def tabloGoster():
+    cursor.execute("SELECT * FROM tablo1")
+    list = cursor.fetchall()
+    for i in list:
+        print(i)
+
+def veriGoster():
+    cursor.execute("SELECT * FROM tablo1 WHERE numara = 26")
+    con.commit()
+
+def veriGuncelle():
+    cursor.execute("UPDATE tablo1 SET soyad= 'caliskan' WHERE numara = 26")
+    con.commit()
+
+def veriSil():
+    cursor.execute("DELETE FROM tablo1 WHERE numara =1")
     con.commit()
 
 
-def tabloOlustur2():
-    cursor.execute('''CREATE TABLE IF NOT EXISTS tablo1(zaman REAL, tarih text, anahtarkelime text, deger real)''')
-    con.commit()
-
-def rastgeleDeger():
-    zaman = time.time()
-    tarih = str(datetime.datetime.fromtimestamp(zaman).strftime('%y-%m-%d'))
-    anahtarkelime = "python3sqlite"
-    deger = random.randrange(0,10)
-    cursor.execute('''INSERT INTO tablo1 (zaman,tarih,anahtarkelime,deger) VALUES (?,?,?,?)''', (zaman,tarih,anahtarkelime,deger))
-    con.commit()
-tabloOlustur2()
-i = 0
-while (i < 10):
-    rastgeleDeger()
-    time.sleep(1)
-    i += 1
-
-con.close()
+veriSil()
+tabloGoster()
