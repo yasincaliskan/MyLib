@@ -33,6 +33,9 @@ def veriSil():
     cursor.execute("DELETE FROM tablo1 WHERE numara =1")
     con.commit()
 
-
+tabloOlustur()
+veriEkle()
+veriGuncelle()
+veriGoster()
 veriSil()
 tabloGoster()
