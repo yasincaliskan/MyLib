@@ -22,8 +22,15 @@ class Ticari(Arac):
         super(Ticari, self).ozellikler()
         print("Fiyat:"+self.fiyat)
 
-binek1 = Binek("Binek","2017","Honda","1.6 VTEC")
+class Spor(Arac):
+    def __init__(self,tur,model,marka,motor,hiz):
+        super().__init__(tur,model,marka)
+        self.motor = motor
+        self.hiz = hiz
+    def ozellikler(self):
+        super(Spor, self).ozellikler()
+        print("Motor:"+self.motor+"\n"+"Top Speed:"+self.hiz)
+
+binek1 = Binek("Binek","2011","Honda","1.6 VTEC")
 binek1.ozellikler()
 
-ticari1 = Ticari("Ticari","2011","Fiat","40.000 TL")
-ticari1.ozellikler()
