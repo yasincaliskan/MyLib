@@ -4,7 +4,6 @@ class Player():
     def __init__(self,race):
         self.race = race
         self.healt=100
-        self.attack_point = random.randrange(7,15)
         self.defense_point = random.randrange(5,10)
     def attack(self,attack_point):
         enemy.healt -= self.defense_point - self.attack_point
@@ -36,7 +35,11 @@ class Orcs(Player):
                 self.attack_point = 12
                 return "Ax damage:" + attack_point
         elif(n == "2"):
-            def
+            def spear():
+                self.attack_point = random.randrange(12,15)
+                return "Spear damage:" + attack_point
+
+            
 
 
 
