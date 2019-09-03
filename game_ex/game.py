@@ -10,10 +10,10 @@ class Player():
         return enemy.healt
 
 class Human(Player):
-    self.race ="Human"
-    self.healt = 90
+    race ="Human"
+    healt = 90
 
-    def attack(self,attack_point,n):
+    def attack(self,n):
         if(n == "1"):
             def punch():
                 self.attack_point = 10
@@ -26,8 +26,8 @@ class Human(Player):
             pass
 
 class Orcs(Player):
-    self.race = "Orcs"
-    self.healt = 110
+    race = "Orcs"
+    healt = 110
 
     def attack(self,attack_point):
         if(n == "1"):
@@ -39,7 +39,14 @@ class Orcs(Player):
                 self.attack_point = random.randrange(12,15)
                 return "Spear damage:" + attack_point
 
-            
+class Enemy():
+    def __init__(self):
+        self.race = "Enemy"
+        self.healt = random.randrange(90,120)
+        self.defense_point = random.randrange(5,10)
+    def attack(self,attack_point):
+        Player.healt -= self.defense_point - self.attack_point
+        return Player.healt
 
 
 
